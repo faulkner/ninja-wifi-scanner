@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Dump http://standards.ieee.org/develop/regauth/oui/oui.txt to json"""
 import os
 import json
