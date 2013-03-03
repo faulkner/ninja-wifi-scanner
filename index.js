@@ -7,21 +7,11 @@ var TotalCount = require('./lib/totalCount.js')
 // Give our module a stream interface
 util.inherits(scanner,stream);
 
-// 1. Run scanner on a loop
-// 2. Analyse after scanner has run
-// 3. Report Device
-//
-// Devices:
-// 1) Total Server Count G: 0
-// 2) Server count per port G: 80/3000/etc
-//
-
 var DEBUG = false;
 
 function scanner(opts,app) {
 
   this.app = app;
-  // app.on('client::up',this.runNmap.bind(this));
   app.on('client::up',this.startScanner.bind(this));
 };
 
@@ -76,24 +66,6 @@ scanner.prototype.parseJSON = function(json) {
   totalDevice.emit('data',dataObj.length);
 
 };
-
-var devices={};
-/**
- * Create and return the port device, and register it
- * if it does not already exist
- * @param  {Number} port The port number
- * @return {Object} instanceof PortCount
- */
-scanner.prototype.fetchPortDevice = function(port) {
-
-  if (!devices.hasOwnProperty(port)) {
-
-    var device = new PortCount(port);
-    devices[port] = device;
-    if (!DEBUG) this.emit('register', device);
-  }
-  return devices[port];
-}
 
 // Export it
 module.exports = scanner;
