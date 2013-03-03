@@ -1,3 +1,4 @@
+#!/usr/bin/env py
 """Convert airodump csv to json"""
 import json
 import argparse
