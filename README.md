@@ -18,3 +18,14 @@ sudo make install
 ```
 
 Tested with a [AWUS036H](http://www.amazon.com/s/field-keywords=awus036h).  You will may need to `apt-get install iw` first.
+
+
+running airodump
+----------------
+
+Currently you need to do this little song and dance manually.
+
+```bash
+sudo airmon-ng start wlan0
+sudo airodump-ng mon0 -w dump --output-format=csv
+```
