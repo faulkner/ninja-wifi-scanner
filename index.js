@@ -1,5 +1,5 @@
 var TotalCount = require('./lib/totalCount.js')
-  , VendorCount = require('./lib/VendorCount.js')
+  , VendorCount = require('./lib/vendorCount.js')
   , util = require('util')
   , stream = require('stream')
   , fs = require('fs')
